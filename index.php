@@ -5,7 +5,7 @@
  *
  * @author NetPuter <netputer@gmail.com>
  */
-require('../src/Wechat.php');
+require('./src/Wechat.php');
 
 /**
  * 微信公众平台演示类
@@ -36,7 +36,10 @@ class MyWechat extends Wechat {
      * @return void
      */
     protected function onText() {
-        $this->responseText('收到了文字消息：' . $this->getRequest('content'));
+        if ($this->getRequest('content')) {
+            $this->responseText('hehe~');
+        }
+        // $this->responseText('收到了文字消息：' . $this->getRequest('content'));
     }
 
     /**
@@ -85,5 +88,5 @@ class MyWechat extends Wechat {
 
 }
 
-$wechat = new MyWechat('weixin', TRUE);
+$wechat = new MyWechat('itasso', TRUE);
 $wechat->run();
